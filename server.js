@@ -1,13 +1,17 @@
-import express from "express";
 const express = require("express");
-const expressGraphGL = require("express-graphql"); // glue layer between express and graphgl
+const expressGraphQL = require("express-graphql"); // glue layer between express and graphgl
+const schema = require("./schema/schema");
 
 const app = express();
+
 app.use(
-  "/graphgl",
-  expressGraphGL({
-    graphigl: true
+  "/graphql",
+  expressGraphQL({
+    schema,
+    graphiql: true
   })
 );
 
-app.listen(4000, () => console.log("listening"));
+app.listen(5500, function() {
+  console.log("Example app listening on port 5500!");
+});
